@@ -226,6 +226,12 @@ public class GameImp implements IGame {
             chartTrend.get(size-1).setRunningStatus("_DONE_");
             chartTrend.get(size-1).setWonNumber(wonNumber);
             chartTrend.get(size-1).setWonColor(wonColor);
+            Random random = new Random();
+            Integer randomValue = random.nextInt(12);
+            chartTrend.get(size-1).setWonTNumber(randomValue);
+
+
+
 
 
             chartTrendRepo.save(chartTrend.get(size-1));
