@@ -7,6 +7,7 @@ import com.spring.jwt.dto.ResponseSizeObjectDto;
 import com.spring.jwt.entity.*;
 import com.spring.jwt.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameImp implements IGame {
     @Autowired
     private GameColorNumberRepo gameColorNumberRepo;
@@ -228,6 +230,7 @@ public class GameImp implements IGame {
             chartTrend.get(size-1).setWonColor(wonColor);
             Random random = new Random();
             Integer randomValue = random.nextInt(12);
+            System.err.println(randomValue +" "+ chartTrend.get(size-1));
             chartTrend.get(size-1).setWonTNumber(randomValue);
 
 
@@ -355,8 +358,10 @@ public class GameImp implements IGame {
 
         List<Integer> listOfNumber = new ArrayList<>();
         List<Integer> listOfColor = new ArrayList<>();
+        List<Integer> listOfObj = new ArrayList<>();
         List<NumberDto> listOfNumbers = new ArrayList<>();
         List<NumberDto> listOfColors = new ArrayList<>();
+        List<NumberDto> listOfObjs = new ArrayList<>();
         NumberDto numberDto;
 
 
@@ -574,25 +579,182 @@ public class GameImp implements IGame {
 
 
         }
+
+
+
+////////////////////////////////////////////////////////////////////////////////objects
+
+        if (o_ne!=null) {
+            listOfNumber.add(one);
+
+            numberDto = new NumberDto(o_ne,1);
+
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,1);
+
+            listOfNumbers.add(numberDto);
+
+        }
+        if (t_wo!=null) {
+            listOfNumber.add(two);
+
+            numberDto = new NumberDto(t_wo,2);
+
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,2);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }if (t_hree!=null) {
+            listOfNumber.add(three);
+
+            numberDto = new NumberDto(t_hree,3);
+
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,3);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }if (f_our!=null) {
+            listOfNumber.add(four);
+
+            numberDto = new NumberDto(f_our,4);
+
+            listOfNumbers.add(numberDto);        }
+
+        else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,4);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }        if (f_ive!=null) {
+            listOfNumber.add(f_ive);
+
+            numberDto = new NumberDto(six,6);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,6);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }
+        if (s_ix!=null) {
+            listOfNumber.add(seven);
+
+            numberDto = new NumberDto(seven,7);
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,7);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }
+        if (s_even!=null) {
+            listOfNumber.add(eight);
+
+            numberDto = new NumberDto(eight,8);
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,8);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }
+        if (e_ight!=null) {
+            listOfNumber.add(nine);
+
+            numberDto = new NumberDto(nine,9);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,9);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        } if (t_en!=null) {
+            listOfNumber.add(nine);
+
+            numberDto = new NumberDto(nine,9);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,9);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }if (e_leven!=null) {
+            listOfNumber.add(nine);
+
+            numberDto = new NumberDto(nine,9);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,9);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }if (t_welve!=null) {
+            listOfNumber.add(nine);
+
+            numberDto = new NumberDto(nine,9);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfNumber.add(0);
+
+            numberDto = new NumberDto(0,9);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }
         System.out.println(black +" "+ red +" "+yellow +" "+ zero +" "+one +" "+ two +" "+three +" "+ four +" "+five +" "+ six +" "+ seven+" "+ eight +" "+nine);
 
           System.out.println(listOfNumber);
           System.out.println(listOfColor);
 
-//        Collections.sort(listOfNumber);
+
         Collections.sort(listOfColor);
         System.out.println(listOfColor);
-//
-        // // System.out.println(listOfNumber);
-        // // System.out.println(listOfColor);
-//
-//        for(NumberDto i :listOfNumbers){
-//            // System.out.println(i.toString());
-//        }
-//
-//        // System.out.println(listOfNumbers.get(7).key);
-//        // System.out.println(listOfNumbers.get(8).key);
-//        // System.out.println(listOfNumbers.get(9).key);
+
 
          numberResult = getResultNumber(listOfNumber,listOfNumbers);
          colorResult = getResultcolor(listOfColor,listOfColors);
@@ -615,7 +777,7 @@ public class GameImp implements IGame {
 //
 
         saveNumberWonUserAmount(numberResult,colorResult);
-         System.out.println("534");
+
                     ProfitGame profit = ProfitGame.builder()
                             .TransactionsDateAndTime(LocalDateTime.now())
                             .totalAmountColor(sumOfColor)
