@@ -215,7 +215,8 @@ public class GameImp implements IGame {
 
     @Override
     public String updateChartTrend(Integer wonNumber,Integer wonColor) {
-
+        Random random = new Random();
+        Integer randomValue = random.nextInt(11);
         try {
 
             List<ChartTrend> chartTrend = chartTrendRepo.findByRunningStatus("_RUNNING_");
@@ -224,13 +225,13 @@ public class GameImp implements IGame {
                 throw new RuntimeException("chart treand details not found by id");
             }
 
+            System.err.println(randomValue +" "+ chartTrend.get(size-1));
 
             chartTrend.get(size-1).setRunningStatus("_DONE_");
             chartTrend.get(size-1).setWonNumber(wonNumber);
             chartTrend.get(size-1).setWonColor(wonColor);
-            Random random = new Random();
-            Integer randomValue = random.nextInt(11);
             System.err.println(randomValue +" "+ chartTrend.get(size-1));
+
             chartTrend.get(size-1).setWonTNumber(randomValue+1);
 
 
