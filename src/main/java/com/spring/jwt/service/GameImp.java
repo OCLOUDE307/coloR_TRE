@@ -586,13 +586,13 @@ public class GameImp implements IGame {
 ////////////////////////////////////////////////////////////////////////////////objects
 
         if (o_ne!=null) {
-            listOfNumber.add(one);
+            listOfObj.add(one);
 
             numberDto = new NumberDto(o_ne,1);
 
             listOfNumbers.add(numberDto);
         }else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,1);
 
@@ -600,13 +600,13 @@ public class GameImp implements IGame {
 
         }
         if (t_wo!=null) {
-            listOfNumber.add(two);
+            listOfObj.add(two);
 
             numberDto = new NumberDto(t_wo,2);
 
             listOfNumbers.add(numberDto);        }
         else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,2);
 
@@ -615,13 +615,13 @@ public class GameImp implements IGame {
 
 
         }if (t_hree!=null) {
-            listOfNumber.add(three);
+            listOfObj.add(three);
 
             numberDto = new NumberDto(t_hree,3);
 
             listOfNumbers.add(numberDto);        }
         else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,3);
 
@@ -630,14 +630,14 @@ public class GameImp implements IGame {
 
 
         }if (f_our!=null) {
-            listOfNumber.add(four);
+            listOfObj.add(four);
 
             numberDto = new NumberDto(f_our,4);
 
             listOfNumbers.add(numberDto);        }
 
         else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,4);
 
@@ -645,13 +645,29 @@ public class GameImp implements IGame {
 
 
 
-        }        if (f_ive!=null) {
-            listOfNumber.add(f_ive);
+        }
+        if (f_ive!=null) {
+            listOfObj.add(f_ive);
 
-            numberDto = new NumberDto(six,6);
+            numberDto = new NumberDto(f_ive,5);
             listOfNumbers.add(numberDto);
         }else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
+
+            numberDto = new NumberDto(0,5);
+
+            listOfNumbers.add(numberDto);
+
+
+
+        }
+        if (s_ix!=null) {
+            listOfObj.add(s_ix);
+
+            numberDto = new NumberDto(s_ix,6);
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,6);
 
@@ -660,13 +676,13 @@ public class GameImp implements IGame {
 
 
         }
-        if (s_ix!=null) {
-            listOfNumber.add(seven);
+        if (s_even!=null) {
+            listOfObj.add(s_even);
 
-            numberDto = new NumberDto(seven,7);
+            numberDto = new NumberDto(s_even,7);
             listOfNumbers.add(numberDto);        }
         else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,7);
 
@@ -675,13 +691,13 @@ public class GameImp implements IGame {
 
 
         }
-        if (s_even!=null) {
-            listOfNumber.add(eight);
+        if (e_ight!=null) {
+            listOfObj.add(e_ight);
 
-            numberDto = new NumberDto(eight,8);
-            listOfNumbers.add(numberDto);        }
-        else {
-            listOfNumber.add(0);
+            numberDto = new NumberDto(e_ight,8);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfObj.add(0);
 
             numberDto = new NumberDto(0,8);
 
@@ -689,58 +705,58 @@ public class GameImp implements IGame {
 
 
 
+        } if (n_ine!=null) {
+            listOfObj.add(n_ine);
+
+            numberDto = new NumberDto(n_ine,9);
+            listOfNumbers.add(numberDto);
+        }else {
+            listOfObj.add(0);
+
+            numberDto = new NumberDto(0,9);
+
+            listOfNumbers.add(numberDto);
+
+
+
         }
-        if (e_ight!=null) {
-            listOfNumber.add(nine);
+        if (t_en!=null) {
+            listOfObj.add(t_en);
 
-            numberDto = new NumberDto(nine,9);
+            numberDto = new NumberDto(t_en,10);
             listOfNumbers.add(numberDto);
         }else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
-            numberDto = new NumberDto(0,9);
-
-            listOfNumbers.add(numberDto);
-
-
-
-        } if (t_en!=null) {
-            listOfNumber.add(nine);
-
-            numberDto = new NumberDto(nine,9);
-            listOfNumbers.add(numberDto);
-        }else {
-            listOfNumber.add(0);
-
-            numberDto = new NumberDto(0,9);
+            numberDto = new NumberDto(0,10);
 
             listOfNumbers.add(numberDto);
 
 
 
         }if (e_leven!=null) {
-            listOfNumber.add(nine);
+            listOfObj.add(e_leven);
 
-            numberDto = new NumberDto(nine,9);
+            numberDto = new NumberDto(e_leven,11);
             listOfNumbers.add(numberDto);
         }else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
-            numberDto = new NumberDto(0,9);
+            numberDto = new NumberDto(0,11);
 
             listOfNumbers.add(numberDto);
 
 
 
         }if (t_welve!=null) {
-            listOfNumber.add(nine);
+            listOfObj.add(t_welve);
 
-            numberDto = new NumberDto(nine,9);
+            numberDto = new NumberDto(t_welve,12);
             listOfNumbers.add(numberDto);
         }else {
-            listOfNumber.add(0);
+            listOfObj.add(0);
 
-            numberDto = new NumberDto(0,9);
+            numberDto = new NumberDto(0,12);
 
             listOfNumbers.add(numberDto);
 
@@ -754,6 +770,7 @@ public class GameImp implements IGame {
 
 
         Collections.sort(listOfColor);
+
         System.out.println(listOfColor);
 
 
