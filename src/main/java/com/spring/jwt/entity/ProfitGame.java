@@ -38,6 +38,10 @@ public class ProfitGame {
     private Integer profitAmountNumber;
     @Column(name = "totalAmountNumber", nullable = false, columnDefinition = "INTEGER")
     private Integer totalAmountNumber;
+    @Column(name = "profitAmountObject", columnDefinition = "INTEGER")
+    private Integer profitAmountObject;
+    @Column(name = "totalAmountObject", columnDefinition = "INTEGER")
+    private Integer totalAmountObject;
 
     @Column(name = "sourceOfProfit", nullable = false, columnDefinition = "VARCHAR(10)")
     private String sourceOfProfit;

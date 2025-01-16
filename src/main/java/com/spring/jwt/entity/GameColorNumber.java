@@ -38,7 +38,6 @@ public class GameColorNumber {
 
     @Column(name = "o_ne", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean o_ne;
-
     @Column(name = "t_wo", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean t_wo;
     @Column(name = "t_hree", nullable = false, columnDefinition = "BOOLEAN")
@@ -85,6 +84,9 @@ public class GameColorNumber {
     private Boolean eight;
     @Column(name = "Nine", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean nine;
+
+
+
     @Column(name = "TYPE", nullable = false, columnDefinition = "VARCHAR(15)")
     private String type;
     @Column(name = "WonNumber", nullable = false, columnDefinition = "INTEGER")
