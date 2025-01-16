@@ -214,8 +214,9 @@ public class GameImp implements IGame {
 
 
     @Override
-    public String updateChartTrend(Integer wonNumber,Integer wonColor,Integer ObjectResult) {
+    public String updateChartTrend(Integer wonNumber,Integer wonColor) {
         Random random = new Random();
+        Integer randomValue = random.nextInt(11);
         try {
 
             List<ChartTrend> chartTrend = chartTrendRepo.findByRunningStatus("_RUNNING_");
@@ -224,14 +225,14 @@ public class GameImp implements IGame {
                 throw new RuntimeException("chart treand details not found by id");
             }
 
-            System.err.println(ObjectResult +" "+ chartTrend.get(size-1));
+            System.err.println(randomValue +" "+ chartTrend.get(size-1));
 
             chartTrend.get(size-1).setRunningStatus("_DONE_");
             chartTrend.get(size-1).setWonNumber(wonNumber);
             chartTrend.get(size-1).setWonColor(wonColor);
-            System.err.println(ObjectResult +" "+ chartTrend.get(size-1));
+            System.err.println(randomValue +" "+ chartTrend.get(size-1));
 
-            chartTrend.get(size-1).setWonTNumber(ObjectResult+1);
+            chartTrend.get(size-1).setWonTNumber(randomValue+1);
 
 
 
@@ -315,7 +316,6 @@ public class GameImp implements IGame {
         // // System.out.println(nine);
         Integer numberResult = -1;
         Integer colorResult = -1;
-        Integer ObjectResult = -1;
         //
         if(zero==null &&
          one==null &&
@@ -324,24 +324,13 @@ public class GameImp implements IGame {
                 five==null && six==null &&
                 seven==null && eight==null &&
                 nine==null && black==null &&
-                yellow==null && red==null
-                && o_ne==null &&
-                t_wo==null &&
-                t_hree ==null && f_our==null &&
-                f_ive==null && s_ix==null &&
-                s_even==null && e_ight==null &&
-                n_ine==null && t_en==null &&
-                e_leven==null && t_welve==null )
+                yellow==null && red==null )
         {
             Random random = new Random();
 
             Integer randomValue = random.nextInt(9);
             // // System.out.println("random number is : "+randomValue);
             numberResult = randomValue;
-
-            randomValue = random.nextInt(11);
-            ObjectResult = randomValue;
-
             randomValue = random.nextInt(3);
             if (randomValue == 0){
                 colorResult = 101;
@@ -350,15 +339,13 @@ public class GameImp implements IGame {
             }else {
                 colorResult = 103;
             }
-            System.err.println(colorResult +" "+numberResult+" "+ObjectResult);
+            System.err.println(colorResult +" "+numberResult);
             ProfitGame profit = ProfitGame.builder()
                     .TransactionsDateAndTime(LocalDateTime.now())
                     .totalAmountColor(0)
                     .totalAmountNumber(0)
                     .profitAmountColor(0)
                     .profitAmountNumber(0)
-                    .profitAmountObject(0)
-                    .totalAmountObject(0)
                     .period(String.valueOf(getLivePeriodNo().getPeriod()))
                     .status("SUCCESS")
                     .sourceOfProfit("GAME")
@@ -366,7 +353,7 @@ public class GameImp implements IGame {
 
             profitRepo.save(profit);
 
-            updateChartTrend(numberResult,colorResult,ObjectResult);
+            updateChartTrend(numberResult,colorResult);
              return colorResult +" "+numberResult;
         }
 
@@ -599,13 +586,13 @@ public class GameImp implements IGame {
 ////////////////////////////////////////////////////////////////////////////////objects
 
         if (o_ne!=null) {
-            listOfObj.add(one);
+            listOfNumber.add(one);
 
             numberDto = new NumberDto(o_ne,1);
 
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,1);
 
@@ -613,13 +600,13 @@ public class GameImp implements IGame {
 
         }
         if (t_wo!=null) {
-            listOfObj.add(two);
+            listOfNumber.add(two);
 
             numberDto = new NumberDto(t_wo,2);
 
             listOfNumbers.add(numberDto);        }
         else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,2);
 
@@ -628,13 +615,13 @@ public class GameImp implements IGame {
 
 
         }if (t_hree!=null) {
-            listOfObj.add(three);
+            listOfNumber.add(three);
 
             numberDto = new NumberDto(t_hree,3);
 
             listOfNumbers.add(numberDto);        }
         else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,3);
 
@@ -643,14 +630,14 @@ public class GameImp implements IGame {
 
 
         }if (f_our!=null) {
-            listOfObj.add(four);
+            listOfNumber.add(four);
 
             numberDto = new NumberDto(f_our,4);
 
             listOfNumbers.add(numberDto);        }
 
         else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,4);
 
@@ -658,29 +645,13 @@ public class GameImp implements IGame {
 
 
 
-        }
-        if (f_ive!=null) {
-            listOfObj.add(f_ive);
+        }        if (f_ive!=null) {
+            listOfNumber.add(f_ive);
 
-            numberDto = new NumberDto(f_ive,5);
+            numberDto = new NumberDto(six,6);
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
-
-            numberDto = new NumberDto(0,5);
-
-            listOfNumbers.add(numberDto);
-
-
-
-        }
-        if (s_ix!=null) {
-            listOfObj.add(s_ix);
-
-            numberDto = new NumberDto(s_ix,6);
-            listOfNumbers.add(numberDto);        }
-        else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,6);
 
@@ -689,13 +660,13 @@ public class GameImp implements IGame {
 
 
         }
-        if (s_even!=null) {
-            listOfObj.add(s_even);
+        if (s_ix!=null) {
+            listOfNumber.add(seven);
 
-            numberDto = new NumberDto(s_even,7);
+            numberDto = new NumberDto(seven,7);
             listOfNumbers.add(numberDto);        }
         else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,7);
 
@@ -704,13 +675,13 @@ public class GameImp implements IGame {
 
 
         }
-        if (e_ight!=null) {
-            listOfObj.add(e_ight);
+        if (s_even!=null) {
+            listOfNumber.add(eight);
 
-            numberDto = new NumberDto(e_ight,8);
-            listOfNumbers.add(numberDto);
-        }else {
-            listOfObj.add(0);
+            numberDto = new NumberDto(eight,8);
+            listOfNumbers.add(numberDto);        }
+        else {
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,8);
 
@@ -718,13 +689,14 @@ public class GameImp implements IGame {
 
 
 
-        } if (n_ine!=null) {
-            listOfObj.add(n_ine);
+        }
+        if (e_ight!=null) {
+            listOfNumber.add(nine);
 
-            numberDto = new NumberDto(n_ine,9);
+            numberDto = new NumberDto(nine,9);
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
             numberDto = new NumberDto(0,9);
 
@@ -732,44 +704,43 @@ public class GameImp implements IGame {
 
 
 
-        }
-        if (t_en!=null) {
-            listOfObj.add(t_en);
+        } if (t_en!=null) {
+            listOfNumber.add(nine);
 
-            numberDto = new NumberDto(t_en,10);
+            numberDto = new NumberDto(nine,9);
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
-            numberDto = new NumberDto(0,10);
+            numberDto = new NumberDto(0,9);
 
             listOfNumbers.add(numberDto);
 
 
 
         }if (e_leven!=null) {
-            listOfObj.add(e_leven);
+            listOfNumber.add(nine);
 
-            numberDto = new NumberDto(e_leven,11);
+            numberDto = new NumberDto(nine,9);
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
-            numberDto = new NumberDto(0,11);
+            numberDto = new NumberDto(0,9);
 
             listOfNumbers.add(numberDto);
 
 
 
         }if (t_welve!=null) {
-            listOfObj.add(t_welve);
+            listOfNumber.add(nine);
 
-            numberDto = new NumberDto(t_welve,12);
+            numberDto = new NumberDto(nine,9);
             listOfNumbers.add(numberDto);
         }else {
-            listOfObj.add(0);
+            listOfNumber.add(0);
 
-            numberDto = new NumberDto(0,12);
+            numberDto = new NumberDto(0,9);
 
             listOfNumbers.add(numberDto);
 
@@ -783,15 +754,11 @@ public class GameImp implements IGame {
 
 
         Collections.sort(listOfColor);
-        Collections.sort(listOfObj);
-
         System.out.println(listOfColor);
 
 
          numberResult = getResultNumber(listOfNumber,listOfNumbers);
          colorResult = getResultcolor(listOfColor,listOfColors);
-        ObjectResult = listOfObj.get(0);
-
         // System.out.println("Final :"+numberResult + " "+colorResult);
 
         // System.out.println("460");
@@ -799,16 +766,9 @@ public class GameImp implements IGame {
         // System.out.println("460");
 
         Integer sumOfColor=sumOfTotalAmount(listOfColors,"COLOR");
-        Integer sumOfObject=sumOfTotalAmount(listOfObjs,"_THINGNUMBER_");
-
         // System.out.println("460");
 
         Integer sumOfNumP =sumOfProfit(listOfNumbers,numberResult);
-
-
-     //        ********************************
-        Integer sumOfObjP =0;
-     //***********************************
         // System.out.println("460");
 
         Integer sumOfColorP=sumOfProfitcolor(listOfColors,colorResult);
@@ -817,7 +777,7 @@ public class GameImp implements IGame {
 //
 //
 
-        saveNumberWonUserAmount(numberResult,colorResult,ObjectResult);
+        saveNumberWonUserAmount(numberResult,colorResult);
 
                     ProfitGame profit = ProfitGame.builder()
                             .TransactionsDateAndTime(LocalDateTime.now())
@@ -825,8 +785,6 @@ public class GameImp implements IGame {
                             .totalAmountNumber(sumOfNum)
                             .profitAmountColor(sumOfColor-sumOfColorP)
                             .profitAmountNumber(sumOfNum-sumOfNumP)
-                            .profitAmountObject(sumOfObject-sumOfObjP)
-                            .totalAmountObject(sumOfObject)
                             .period(String.valueOf(getLivePeriodNo().getPeriod()))
                             .status("SUCCESS")
                             .sourceOfProfit("GAME")
@@ -835,7 +793,7 @@ public class GameImp implements IGame {
             profitRepo.save(profit);
         System.err.println(colorResult +" "+numberResult +"result without condition");
 
-            updateChartTrend(numberResult,colorResult,ObjectResult);
+            updateChartTrend(numberResult,colorResult);
 
         return colorResult +" "+numberResult;
 //        return String.valueOf(colorResult);
@@ -1145,7 +1103,7 @@ public class GameImp implements IGame {
         return gameColorNumbers;
     }
 
-    public void saveNumberWonUserAmount(Integer number , Integer color,Integer object) {
+    public void saveNumberWonUserAmount(Integer number , Integer color) {
         Boolean black = false;
         Boolean red =false;
         Boolean yellow =false;
@@ -1159,21 +1117,6 @@ public class GameImp implements IGame {
         Boolean seven =false;
         Boolean eight =false;
         Boolean nine =false;
-
-        Boolean z_ero =false;
-        Boolean o_ne =false;
-        Boolean t_wo =false;
-        Boolean t_hree =false;
-        Boolean f_our =false;
-        Boolean f_ive =false;
-        Boolean s_ix =false;
-        Boolean s_even =false;
-        Boolean e_ight =false;
-        Boolean n_ine =false;
-        Boolean t_en =false;
-        Boolean e_leven =false;
-        Boolean t_welve =false;
-
         //      _YELLOW_  == 101
 //        _RED_   == 102
 //        _BLACK_ == 103
@@ -1229,105 +1172,12 @@ public class GameImp implements IGame {
         }
 
 
-        //objects//
-        if (object == 0) {
-            z_ero = true;
-        }
-        else if (object == 1) {
-            o_ne = true;
-
-        }
-        else if (object == 2) {
-            t_wo = true;
-
-        }
-        else if (object == 3) {
-            t_hree = true;
-
-        }
-        else if (object == 4) {
-            f_our= true;
-
-        }
-        else if (object == 5) {
-            f_ive = true;
-
-        }
-        else if (object == 6) {
-            s_ix = true;
-
-        }
-        else if (object == 7) {
-            s_even = true;
-
-        }
-        else if (object == 8) {
-            e_ight = true;
-
-        }
-        else if (object == 9) {
-            n_ine = true;
-        } else if (object == 10) {
-            t_en = true;
-        }
-        else if (object == 11) {
-            e_leven = true;
-        }
-        else if (object == 12) {
-         t_welve = true;
-        }
 
 
-
-
-
-        List<GameColorNumber> gameColorNumbers1 = new LinkedList<>();
+            List<GameColorNumber> gameColorNumbers1 = new LinkedList<>();
             List<GameColorNumber> gameColorNumbers = gameColorNumberRepo.findAllWinStatus(false);
             for (GameColorNumber gameColorNumber:gameColorNumbers){
                 if (gameColorNumber.getType().equals("_NUMBER_")){
-                    //numbers//
-                    if (gameColorNumber.getZero() && zero) {
-                        gameColorNumbers1.add(gameColorNumber);
-                    }
-                    else if (gameColorNumber.getOne() && one) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getTwo() && two) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getThree() && three) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getFour() && four) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getFive() && five) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getSix() && six) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getSeven() && seven) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getEight() && eight) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    else if (gameColorNumber.getNine() && nine) {
-                        gameColorNumbers1.add(gameColorNumber);
-
-                    }
-                    gameColorNumber.setWonNumber(number);
-
-                } if (gameColorNumber.getType().equals("_NUMBER_")){
                     //numbers//
                     if (gameColorNumber.getZero() && zero) {
                         gameColorNumbers1.add(gameColorNumber);

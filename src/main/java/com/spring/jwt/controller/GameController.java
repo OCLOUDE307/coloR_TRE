@@ -62,9 +62,9 @@ public class GameController {
     }
 
     @PatchMapping("/updateChartTrend")
-    public ResponseEntity<?> updateChartTrend(@RequestParam Integer wonNumber,@RequestParam Integer wonColor,@RequestParam Integer objectResult) {
+    public ResponseEntity<?> updateChartTrend(@RequestParam Integer wonNumber,@RequestParam Integer wonColor) {
         try {
-            String message = iGame.updateChartTrend(wonNumber,wonColor,objectResult);
+            String message = iGame.updateChartTrend(wonNumber,wonColor);
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto("success", message));
 
         } catch (RuntimeException e) {
